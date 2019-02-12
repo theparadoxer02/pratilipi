@@ -1,0 +1,6 @@
+Django==1.11
+django-crispy-forms==1.7.2
+Pillow==5.4.1
+psycopg2==2.7.7
+psycopg2-binary==2.7.7
+pytz==2018.9
