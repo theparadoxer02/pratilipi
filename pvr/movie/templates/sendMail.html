@@ -1,0 +1,24 @@
+<html>
+    <body>
+        <h2>Send Mail</h2>
+            
+        {% load admin_static %}
+
+        <link href="{% static 'admin/css/base.css' %}" rel="stylesheet">
+        <script src="{% static 'admin/js/core.js' %}" type="text/javascript"> </script>
+        
+
+            {% if form.errors %}
+                <p>NOT VALID</p>
+            {% for errors in form.errors %}
+                {{ errors }}
+                {% endfor %}
+            {% endif %}
+            
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Send Mail</button>
+        </form>
+    </body>
+</html>
