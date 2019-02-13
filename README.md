@@ -25,3 +25,21 @@ python manage.py migrate
 ```
 python manage.py runserver
 ```
+
+6. CREATE SUPERUSER
+```
+python manage.py createsuperuser
+```
+
+7. Go to url localhost:8000/admin and create some dump database like country, city, movie theatre etc.
+
+8. Some URL endpoints are
+
+    Signup Form: `http://localhost:8000`
+    Send Mail Form: `http://localhost:8000/sendmail/`
+
+
+9. Tech Stack Used:
+    - Django
+    - Celery for asynchronous tasks of sending mails
+    - Postgres
