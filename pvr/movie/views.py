@@ -20,9 +20,10 @@ def sendMail(request):
             theatre_ids = movie.movies.filter(is_running=True).values('theatre').distinct()
             print(theatre_ids)
             theatre_cities = Theatre.objects.filter(id__in=theatre_ids).values('city')
-            user_email_list = Profile.objects.filter(city__in=theatre_cities).values_list('email')
+            user_email_list = Profile.objects.filter(city__in=theatre_cities).values_list('email', flat=True)
+            # send_email_to_users_task.delay(user_email_list, body)
+            print(user_email_list)
             import pdb
-            pdb.set_trace()
-            send_email_to_users_task.delay(user_email_list, body)
-    
+            # pdb.set_trace()
+            return render(request, 'success_mail.html', {'user_email_list': user_email_list})
     return render(request, 'sendMail.html', {'form': form})
