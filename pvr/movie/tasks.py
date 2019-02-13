@@ -10,6 +10,6 @@ def send_email_to_users_task(email_list, message):
     logger.info("Sent PVR email")
     # need to be defined
     for email in email_list:
-        send_mail(email[0], message)
+        send_mail(email, message)
     
     return('Mail is sent to the user list')
