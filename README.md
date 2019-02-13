@@ -14,7 +14,22 @@ cd pvr
 pip install -r  requirements.txt
 ```
 
-3. Update Database setting in `pvr/settings.py` file
+3. Create Postgres Database name `pratilipidb`
+Update Database setting in `pvr/settings.py` file
+
+e.g Setup
+```
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'pratilipidb',
+        'USER': 'pratilipi_user',
+        'PASSWORD': 'paratilipi_pass',
+        'HOST': 'localhost',
+        'PORT': '',
+    }
+}
+```
 
 4. Migrations
 ```
