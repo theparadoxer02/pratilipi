@@ -3,10 +3,12 @@ from .forms import SendMailForm
 from users.models import Profile
 from .models import Theatre
 from django.contrib.admin.views.decorators import staff_member_required
+from .tasks import send_email_to_users_task
 
 
 @staff_member_required
 def sendMail(request):
+    '''send mail asynchrounously to users'''
     form = SendMailForm(request.POST or None)
     if request.method == 'POST':
         # import pdb
@@ -18,6 +20,9 @@ def sendMail(request):
             theatre_ids = movie.movies.filter(is_running=True).values('theatre').distinct()
             print(theatre_ids)
             theatre_cities = Theatre.objects.filter(id__in=theatre_ids).values('city')
-            user_list = Profile.objects.filter(city__in=theatre_cities).values('email')
-            print(user_list)
+            user_email_list = Profile.objects.filter(city__in=theatre_cities).values_list('email')
+            import pdb
+            pdb.set_trace()
+            send_email_to_users_task.delay(user_email_list, body)
+    
     return render(request, 'sendMail.html', {'form': form})
