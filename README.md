@@ -35,8 +35,9 @@ python manage.py createsuperuser
 
 8. Some URL endpoints are
 
-    Signup Form: `http://localhost:8000`
-    Send Mail Form: `http://localhost:8000/sendmail/`
+    - Signup Form: `http://localhost:8000`
+    - Send Mail Form: `http://localhost:8000/sendmail/`
+    - Admin URL : `http://localhost:8000/admin`
 
 
 9. Tech Stack Used:
